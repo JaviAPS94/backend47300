@@ -1,0 +1,24 @@
+//PUT -> Trabajar modificaciones
+
+Estamos haciendo una actualizacion total de nuestro recurso o entidad
+
+{
+    id: 1,
+    name: 'producto',
+    price: 100,
+    description: 'producto prueba'
+}
+
+
+//PATCH -> Trabajar modificaciones
+
+Estamos haciendo una actualización parcial de nuestro recurso o entidad
+
+Merge de objetos
+
+{
+    id: 1,
+    name: 'producto',
+    price: 100,
+    description: 'producto prueba'
+}
