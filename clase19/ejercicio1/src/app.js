@@ -1,5 +1,10 @@
 import express from 'express';
 import session from 'express-session';
+import FileStore from 'session-file-store';
+import MongoStore from 'connect-mongo';
+import __dirname from './utils.js';
+
+const fileStore = FileStore(session);
 
 const app = express();
 
@@ -7,14 +12,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Configuración de sessions
-//Persistir nuestra session en memoria
+//Persistir nuestra session en archivos
+// app.use(session({
+//     store: new fileStore({
+//         path: `${__dirname}/sessions`,
+//         ttl: 30,
+//         retries: 0
+//     }),
+//     secret: 'Coder47300Secret',
+//     resave: true,
+//     saveUninitialized: true,
+// }));
+//Persistir nuestra session en BDD
 app.use(session({
+    store: MongoStore.create({
+        mongoUrl: 'mongodb+srv://alexpinaida47300:iWtqbn7Dan1aIFD1@cluster47300ap.0rhmqgm.mongodb.net/clase19?retryWrites=true&w=majority',
+        mongoOptions: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        },
+        ttl: 10 //en segundos
+    }),
     secret: 'Coder47300Secret',
     resave: true,
     saveUninitialized: true,
-    cookie: {
-        maxAge: 3000
-    }
 }));
 
 //Middleware de autenticación
