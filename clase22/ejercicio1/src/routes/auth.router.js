@@ -20,7 +20,10 @@ router.post('/register', async (req, res) => {
         const exists = users.find(user => user.email === email);
 
         if(exists) return res.status(400).send({ status: 'error', message: 'userr already exists' });
-
+        // {
+        //     status: 'error',
+        //     message: 'asdasdasd'
+        // }
         const user = {
             name,
             email,
