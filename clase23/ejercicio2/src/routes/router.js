@@ -31,6 +31,15 @@ export default class Router {
         )
     }
 
+    put(path, policies, ...callbacks) {
+        this.router.put(
+            path,
+            this.handlePolicies(policies),
+            this.generateCustomResponse,
+            this.applyCallbacks(callbacks) 
+        )
+    }
+
     handlePolicies = (policies) => (req, res, next) => {
         //["ADMIN"]
         //No validamos nada
