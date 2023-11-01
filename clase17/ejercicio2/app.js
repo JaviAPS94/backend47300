@@ -39,27 +39,16 @@ const environment = async () => {
             }
         ])
 
-        // Obtener a los estudiantes agrupados por grupo
-        const result2 = await studentsModel.aggregate([
-            {
-                $group: { _id: '$group', students: { $push: '$$ROOT' }}
-            }
-        ]);
+        // PROMEDIO ESTUDIANTES 1B
+        let result = await studentsModel.aggregate([
+            { $match: { group: "1B" } },
+            { $group: { _id: "1B", promedio: { $avg: "$grade" } } }
+        ])
 
         //Obtener el promedio general de los estudiantes.
         const result3 = await studentsModel.aggregate([
             {
                 $group: { _id: 'Students', promedio: { $avg: '$grade' } }
-            }
-        ]);
-
-        //Obtener el promedio de calificación de las mujeres
-        const result4 = await studentsModel.aggregate([
-            {
-                $match: { gender: 'Female' }
-            },
-            {
-                $group: { _id: 'Female', promedio: { $avg: '$grade' } }
             }
         ]);
 
