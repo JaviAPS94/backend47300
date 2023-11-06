@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mi sitio clase 47300</h1>
+    <p>Estee es mi nuevo sitio web (frontend)</p>
+    <button onclick="presionar()">Hz click aquí</button>
+</body>
+<script>
+    async function presionar() {
+        try {
+            const response = await fetch('http://localhost:8095/');
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+</script>
+</html>

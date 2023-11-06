@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'Coder47300Secret',
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         maxAge: 3000
     }
