@@ -1,5 +1,5 @@
 import Router from './router.js';
-import Courses from '../dao/dbManagers/courses.manager.js';
+import Courses from '../dao/fileManagers/courses.manager.js';
 import { accessRoles, passportStrategiesEnum } from '../config/enums.js';
 
 export default class CoursesRouter extends Router {
