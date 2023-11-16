@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
 
         //generar el token de acceso
 
-        delete user.password;
+        //delete user.password;
 
         const accessToken = generateToken(user);
 
