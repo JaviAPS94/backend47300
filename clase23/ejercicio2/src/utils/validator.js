@@ -1,7 +1,7 @@
 import expressJoiValidation from 'express-joi-validation';
 
 const validator = expressJoiValidation.createValidator({
-    passError: true
+    passError: false
 });
 
 export default validator;

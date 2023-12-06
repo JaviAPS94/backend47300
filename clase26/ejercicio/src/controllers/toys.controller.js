@@ -1,3 +1,5 @@
+import { saveToy as saveToyService, getToys as getToysService} from "../services/toys.service.js";
+
 const saveToy = async (req, res) => {
     try {
         const toy = req.body;

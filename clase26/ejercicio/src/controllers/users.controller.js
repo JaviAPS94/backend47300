@@ -1,3 +1,5 @@
+import { saveUser as saveUserService, getUsers as getUsersService} from "../services/users.service.js";
+
 const saveUser = async (req, res) => {
     try {
         const user = req.body;
