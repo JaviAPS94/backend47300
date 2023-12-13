@@ -1,7 +1,10 @@
 import { Router } from 'express';
+// import Contacts from '../dao/mongo/contacts.mongo.js';
+import { Contacts } from '../dao/factory.js';
 import { contactsRepository } from '../repositories/index.js';
 
 const router = Router();
+const contactsDao = new Contacts();
 
 router.get('/', async (req, res) => {
     // const data = await contactsDao.get();
@@ -9,6 +12,8 @@ router.get('/', async (req, res) => {
     res.json(data);
 });
 
+
+//Segunda parte
 router.post('/', async (req, res) => {
     const { name, lastname, phone } = req.body;
     // const contact = new ContactsDto({ name, lastname, phone });

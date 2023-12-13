@@ -25,7 +25,7 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'handlebars');
 
 app.use('/', viewsRouter);
-app.use('/api/students', studentsRouter.getRouter());
+app.use('/api/students-v2', studentsRouter.getRouter());
 app.use('/api/courses', coursesRouter.getRouter());
 app.use('/api/users', usersRouter.getRouter());
 
