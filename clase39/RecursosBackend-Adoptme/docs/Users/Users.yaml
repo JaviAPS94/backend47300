@@ -1,0 +1,117 @@
+paths:
+  /api/users:
+    get:
+      summary: Obtiene el listado de todos los usuarios
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Los usuarios fueron obtenidos satisfactoriamente de la BDD
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/User'
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo en la conexión
+  /api/users/{uid}:
+    get:
+      summary: Obtiene un solo usuario a partir de su uid
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: El id del usuario a buscar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El usuario fue obtenido correctamente de nuestra BDD
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/User'
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo en la conexión
+    put:
+      summary: Actualiza el usuario a partir de su uid
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: El id del usuario que quier actualizar
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateUser'
+      responses:
+        "200":
+          description: El usuario fue actualizado correctamente
+        "404":
+          description: El usuario no fue encontrado en BDD
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo en la conexión
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por mongodb
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Correo del usuario
+        password:
+          type: String
+          description: Password del usuario
+        role:
+          type: String
+          description: Rol del usuario
+      example:
+        _id: ObjectId("hkahdsjk234")
+        first_name: Robert
+        last_name: Mendoza
+        email: rm@gmail.com
+        password: 1234
+        role: admin
+  requestBodies:
+    updateUser:
+      type: object
+      properties:
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Correo del usuario
+        password:
+          type: String
+          description: Password del usuario
+        role:
+          type: String
+          description: Rol del usuario
+      example:
+        first_name: Robert
+        last_name: Mendoza
+        email: rm@gmail.com
+        password: 1234
+        role: admin
