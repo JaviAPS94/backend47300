@@ -19,9 +19,9 @@ const generateUser = () => {
         email: faker.internet.email(),
         id: faker.database.mongodbObjectId(),
         products,
-        jobTitle: faker.person.jobTitle(),
-        premium: faker.datatype.boolean(),
-        role: faker.helpers.arrayElement(['cliente','vendedor'])
+        jobTitle: faker.person.jobTitle(), //parte 2
+        premium: faker.datatype.boolean(), //parte 2
+        role: faker.helpers.arrayElement(['cliente','vendedor']) //parte 2
     }
 }
 
@@ -33,8 +33,8 @@ const generateProduct = () => {
         stock: faker.number.int(1),
         id: faker.database.mongodbObjectId(),
         image: faker.image.url(),
-        description: faker.commerce.productDescription(),
-        code: faker.string.alphanumeric(10)
+        description: faker.commerce.productDescription(), //parte 2
+        code: faker.string.alphanumeric(10) //parte 2
     }
 }
 
