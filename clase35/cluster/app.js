@@ -41,3 +41,5 @@ if(cluster.isPrimary) {
     console.log("Server listening on port 3030");
     });
 }
+
+//artillery quick --count 40 --num 50 "http://localhost:8080/operacioncompleja" -o compleja-test.json
