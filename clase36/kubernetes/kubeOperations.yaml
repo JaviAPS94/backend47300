@@ -15,7 +15,7 @@ spec:
 apiVersion: apps/v1
 # El tipo de recurso, esta enfocado en nuestros contenedores
 kind: Deployment
-# El nombre con el cual será reconocida nuestra app
+# El nombre con el cual será reconocida nuestra app, nombre en cada pod como prefijo
 metadata:
   name: kubeoperations
 # Espcificaciones, describe lo que queremos que se implemente con este recurso
@@ -44,3 +44,7 @@ spec:
           - name: MONGO_URL
             value: http://localhost:5433
         imagePullPolicy: Always
+
+# ifNoPresent: Sólo hará pull de DockerHub si no está la imagen ya en el entorno local.
+# Always: Siempre pullear la imagen de DockerHub, independientemente de que se encuentre local.
+# Never: Nunca obtener de DockerHub, fuerza a que la imagen ya esté localmente (peligroso para minikube)
